@@ -4,7 +4,7 @@ const mysql = require("mysql2/promise");
 const app = express();
 const path = require("path");
 const {createConnection} = require("./database/database")
-
+const {getName} = require("./database/services")
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -12,7 +12,7 @@ app.use(express.static("public"));
 
 app.get("/", async (req,res)=>{
   const connection = await createConnection();
-  const [results] = await connection.query("SELECT * FROM user WHERE postNumber = 7500");
+  const results = await getName(connection);
   res.render("index", {user:results, title: "Title", message: "Kattefakta for dagen"});
   
 });
@@ -29,6 +29,7 @@ app.get("/fakta", async (req, res) => {
     fact: catFact.fact,
   });
 });
+
 
 
 
