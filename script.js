@@ -3,32 +3,36 @@ const mysql = require("mysql2/promise");
 
 const app = express();
 const path = require("path");
+const {createConnection} = require("./database/database")
+
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-app.get("/", (req, res) => {
-  res.render("index", { title: "Title", message: "Kattefakta for dagen" });
+
+
+app.get("/", async (req,res)=>{
+  const connection = await createConnection();
+  const [results] = await connection.query("SELECT * FROM user WHERE postNumber = 7500");
+  res.render("index", {user:results, title: "Title", message: "Kattefakta for dagen"});
+  
 });
 
-app.get("/fakta", async (req, res) => {
-  const connection = await mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "user_db",
-  });
-  const [results, fields] = await connection.query(
-    "SELECT * FROM user WHERE postNumber = 7500"
-  );
-  console.log(results);
-  const catFact = await getCatFact();
 
+
+
+app.get("/fakta", async (req, res) => {
+  const catFact = await getCatFact();
+  
   res.render("fact", {
     title: "Fakta",
     heading: "Velkommen til kattefakta",
     fact: catFact.fact,
   });
 });
+
+
+
+
 
 async function getCatFact() {
   const response = await fetch("https://catfact.ninja/fact");
