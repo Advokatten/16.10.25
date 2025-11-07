@@ -9,8 +9,17 @@
   <body>
     <a href="/fakta">Til fakta</a>
     <h1 class="header"><%= message %></h1>
-    <p class="test"><% user.forEach(element => { %>
+    <div>
+          <p class="test"><% user.forEach(element => { %>
     <%= element.name %>
+    
     <% }) %></p>
+    <p class="test"> 
+      <% user.forEach(element => {%>
+      <%= element.name  %>
+
+    <% })  %></p>
+    </div>
+    
   </body>
 </html>
