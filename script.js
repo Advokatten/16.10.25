@@ -10,6 +10,7 @@ const port = 4000;
 
 // importerer funkjson som lager kobling til databasen.
 const { createConnection } = require("./database/database");
+const { insertIntoDatabase } = require("./database/app");
 // importerer funkjson som henter data fra databasen.
 const { getName } = require("./database/services");
 // konfigurerer EJS som malmotor.
@@ -36,17 +37,18 @@ app.get("/", async (req, res) => {
 app.get("/input", (req, res) => {
   return res.render("post");
 });
-async function insertIntoDatabase(connection, name, lastName, postNumber) {
-  const query = "INSERT into user (name, lastName, postNumber) VALUES(?, ?, ?)";
-  return await connection.execute(query, [name, lastName, postNumber]);
-}
+
 app.post("/input", async (req, res) => {
   const connection = await createConnection();
-  const name = req.body.name;
-  const lastName = req.body.lastName;
-  const postNumber = req.body.postNumber;
-  await insertIntoDatabase(connection, name, lastName, postNumber);
-  return res.send(`du la til ${(name, lastName, postNumber)}`);
+  const input = req.body;
+
+  await insertIntoDatabase(
+    connection,
+    input.name,
+    input.lastName,
+    input.postNumber
+  );
+  return res.send(`du la til ${name} ${lastName} ${postNumber}`);
 });
 // Forteller hvordan siden/koden skal svare til en get forespørsel?
 app.get("/fakta", async (req, res) => {
