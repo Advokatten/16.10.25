@@ -1,25 +1,23 @@
-async function getName(connection) {
+async function getCar(connection) {
   const [results] = await connection.query("SELECT * FROM user");
+
   return results;
 }
 
 async function insertIntoDatabase(
   connection,
-  first_name,
-  last_name,
   email,
   password,
+  first_name,
+  last_name,
 ) {
-  console.log(first_name, last_name, email, password);
-
   const query =
-    "INSERT into user (first_name, last_name, email, password) VALUES ( ?, ?, ?, ? )";
+    "INSERT INTO user (email, password, first_name, last_name) VALUES (?, ?, ?, ?)";
   return await connection.execute(query, [
-    first_name,
-    last_name,
     email,
     password,
+    first_name,
+    last_name,
   ]);
 }
-
-module.exports = { getName, insertIntoDatabase };
+module.exports = { getCar, insertIntoDatabase };

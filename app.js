@@ -12,7 +12,7 @@ const port = 4000;
 const { createConnection } = require("./database/database");
 const { insertIntoDatabase } = require("./database/services");
 // importerer funkjson som henter data fra databasen.
-const { getName } = require("./database/services");
+const { getCar } = require("./database/services");
 // konfigurerer EJS som malmotor.
 app.set("view engine", "ejs");
 // serverer statiske filer.
@@ -25,7 +25,7 @@ app.get("/", async (req, res) => {
   // åpner en ny mysql tilkobling
   const connection = await createConnection();
   // henter data fra databasen.
-  const results = await getName(connection);
+  const results = await getCar(connection);
   // definerer hvordan vi skal svare på forsepørslen (req) fra klienten på denne ruten.
   res.render("index", {
     user: results,
@@ -49,13 +49,21 @@ app.post("/register", async (req, res) => {
     input.email,
     input.password,
   );
-  return res.send(
-    `du la til ${input.first_name} ${input.last_name} ${input.email} ${input.password}`,
-  );
+  return res.send(`du la til ${input.email} ${input.password}`);
 });
 
 app.get("/signin", (req, res) => {
   return res.render("signin");
+});
+
+app.post("signin", async (req, res) => {
+  const connection = await createConnection();
+  const userData = req.body;
+
+  const dbUserInfo = await getUserData(connection, userData.email);
+  console.log(dbUserInfo)[0].email;
+
+  res.redirect("/signin");
 });
 
 // Forteller hvordan siden/koden skal svare til en get forespørsel?
