@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <title></title>
-  </head>
-  <body>
-    <a href="/fakta">Til fakta</a>
-    <a href="/register">Til posts</a>
-    <h1 class="header"><%= message %></h1>
-    <div>
-      <p class="test">
-        <% user.forEach(element => { %> <%= element.name %> <% }) %>
-      </p>
-      <p class="test">
-        <% user.forEach(element => {%> <%= element.name %> <% }) %>
-      </p>
-    </div>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="/css/style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<a href="/bruker">Til brukere!</a>
+		<h1>Hjemme</h1>
+		<div class="car-card">
+			<% cars.forEach(car => { %>
+			<div>
+				<ul>
+					<li><%= car.brand %></li>
+					<li><%= car.engine %></li>
+					<li><%= car.wheels %></li>
+				</ul>
+				<img
+					src="/images/car.jpg"
+					alt="car"
+					class="car-image" />
+			</div>
+			<% }) %>
+		</div>
+	</body>
 </html>
