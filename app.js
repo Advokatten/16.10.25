@@ -10,7 +10,7 @@ const port = 4000;
 
 // importerer funkjson som lager kobling til databasen.
 const { createConnection } = require("./database/database");
-const { insertIntoDatabase } = require("./database/app");
+const { insertIntoDatabase } = require("./database/services");
 // importerer funkjson som henter data fra databasen.
 const { getName } = require("./database/services");
 // konfigurerer EJS som malmotor.
@@ -34,22 +34,30 @@ app.get("/", async (req, res) => {
   });
 });
 
-app.get("/input", (req, res) => {
-  return res.render("post");
+app.get("/register", (req, res) => {
+  return res.render("register");
 });
 
-app.post("/input", async (req, res) => {
+app.post("/register", async (req, res) => {
   const connection = await createConnection();
   const input = req.body;
 
   await insertIntoDatabase(
     connection,
-    input.name,
-    input.lastName,
-    input.postNumber
+    input.first_name,
+    input.last_name,
+    input.email,
+    input.password,
   );
-  return res.send(`du la til ${name} ${lastName} ${postNumber}`);
+  return res.send(
+    `du la til ${input.first_name} ${input.last_name} ${input.email} ${input.password}`,
+  );
 });
+
+app.get("/signin", (req, res) => {
+  return res.render("signin");
+});
+
 // Forteller hvordan siden/koden skal svare til en get forespørsel?
 app.get("/fakta", async (req, res) => {
   const catFact = await getCatFact();

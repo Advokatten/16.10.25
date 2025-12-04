@@ -5,7 +5,7 @@ async function createConnection() {
     host: "localhost",
     user: "root",
     password: "gpz600xKrokeide",
-    database: "user_db",
+    database: "users_db",
   });
 }
 
