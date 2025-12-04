@@ -11,21 +11,14 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<a href="/registerUser">Til sign up!</a>
-		<a href="/signin">Sign in!</a>
+		<a href="/bruker">Til brukere!</a>
 		<h1>Hjemme</h1>
 		<div class="car-card">
-			<% cars.forEach(car => { %>
+			<% names.forEach(name => { %>
 			<div>
 				<ul>
-					<li><%= car.brand %></li>
-					<li><%= car.engine %></li>
-					<li><%= car.wheels %></li>
+					<li>Velkommen <%= name %></li>
 				</ul>
-				<img
-					src="/images/car.jpg"
-					alt="car"
-					class="car-image" />
 			</div>
 			<% }) %>
 		</div>

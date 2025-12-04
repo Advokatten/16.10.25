@@ -122,11 +122,11 @@ app.get("/", async (req, res) => {
   res.render("index", { cars: results });
 });
 
-app.get("/registrer", (req, res) => {
-  res.render("registrerUser");
+app.get("/registerUser", (req, res) => {
+  res.render("registerUser");
 });
 
-app.post("/registrer", async (req, res) => {
+app.post("/registerUser", async (req, res) => {
   const connection = await createConnection();
   const input = req.body;
   await insertIntoUserDatabase(
@@ -136,14 +136,14 @@ app.post("/registrer", async (req, res) => {
     input.email,
     input.password,
   );
-  res.redirect("/registrer");
+  res.redirect("/registerUser");
 });
 
-app.get("/innlogging", (req, res) => {
+app.get("/signin", (req, res) => {
   res.render("signin");
 });
 
-app.post("/innlogging", async (req, res) => {
+app.post("/signin", async (req, res) => {
   const connection = await createConnection();
   const userData = req.body;
   const dbUserInfo = await getUserData(connection, userData.email);
@@ -154,14 +154,14 @@ app.post("/innlogging", async (req, res) => {
     !dbUserInfo[0].email === "hello@hello.no" &&
     !dbUserInfo[0].password === "Kappa123"
   ) {
-    res.redirect("/innlogging");
+    res.redirect("/signin");
   }
 
   if (
     !dbUserInfo[0].email === "hello@hello.no" &&
     !dbUserInfo[0].password === "Kappa123"
   ) {
-    res.redirect("/innlogging");
+    res.redirect("/signin");
   }
   // const connection = await createConnection();
   // const input = req.body;
