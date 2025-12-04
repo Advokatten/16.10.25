@@ -1,11 +1,186 @@
+body {
+  background: #1a1a2e url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%231a1a2e" width="100" height="100"/><circle cx="50" cy="50" r="30" fill="%23ff00ff" opacity="0.3"/><rect x="10" y="10" width="20" height="20" fill="%2300ffff" opacity="0.3"/><polygon points="80,80 100,90 90,70" fill="%23ffff00" opacity="0.3"/></svg>');
+  font-family: Comic Sans MS, cursive;
+  color: lime;
+  text-shadow: 2px 2px 4px #ff0000, -2px -2px 4px #0000ff;
+}
+
 .header {
   display: flex;
   justify-content: center;
+  font-size: 48px;
+  font-weight: 900;
+  color: #00ff00;
+  text-shadow: 3px 3px 0px #ff00ff, 6px 6px 0px #00ffff;
+  transform: rotate(-5deg) skew(10deg);
+  background: repeating-linear-gradient(
+    45deg,
+    #ffff00,
+    #ffff00 10px,
+    #ff00ff 10px,
+    #ff00ff 20px
+  );
+  padding: 20px;
+  border: 5px dashed #ff0000;
+  border-radius: 0;
+  animation: slowSpin 6s linear infinite;
 }
 
-
+@keyframes slowSpin {
+  0% { transform: rotate(-5deg) skew(10deg); }
+  100% { transform: rotate(355deg) skew(10deg); }
+}
 
 .test {
   display: flex;
-  justify-content:center;
+  justify-content: center;
+  font-size: 24px;
+  color: #ffff00;
+  background: #ff00ff;
+  padding: 20px;
+  margin: 20px;
+  border: 3px solid #00ff00;
+  transform: skew(-15deg);
+  letter-spacing: 5px;
+  line-height: 2.5;
+  word-spacing: 10px;
+  text-decoration: underline wavy #ff0000;
+  box-shadow: 
+    5px 5px 0px #00ffff,
+    10px 10px 0px #ffff00,
+    15px 15px 0px #ff0000;
+  animation: classicScreenSaver 25s linear infinite;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+a {
+  color: #ff0000;
+  background: #ffff00;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  border: 2px solid #00ff00;
+  margin: 5px;
+  display: inline-block;
+  transform: rotate(2deg);
+  position: fixed;
+}
+
+a:nth-child(1) {
+  animation: screenSaver1 6s linear infinite;
+}
+
+a:nth-child(2) {
+  animation: screenSaver2 7s linear infinite;
+}
+
+a:nth-child(3) {
+  animation: screenSaver3 8s linear infinite;
+}
+
+a:hover {
+  background: #00ff00;
+  color: #ff00ff;
+  transform: rotate(-5deg) scale(1.2);
+}
+
+@keyframes bounce1 {
+  0% { left: 2%; top: 5%; }
+  10% { left: 12%; top: 5%; }
+  20% { left: 22%; top: 10%; }
+  30% { left: 32%; top: 8%; }
+  40% { left: 42%; top: 15%; }
+  50% { left: 52%; top: 12%; }
+  60% { left: 62%; top: 20%; }
+  70% { left: 72%; top: 18%; }
+  80% { left: 82%; top: 25%; }
+  90% { left: 90%; top: 20%; }
+  100% { left: 2%; top: 5%; }
+}
+
+@keyframes bounce2 {
+  0% { left: 5%; top: 80%; }
+  15% { left: 20%; top: 75%; }
+  30% { left: 35%; top: 80%; }
+  45% { left: 50%; top: 78%; }
+  60% { left: 65%; top: 82%; }
+  75% { left: 80%; top: 80%; }
+  90% { left: 88%; top: 75%; }
+  100% { left: 5%; top: 80%; }
+}
+
+@keyframes bounce3 {
+  0% { right: 5%; top: 40%; }
+  12% { right: 15%; top: 35%; }
+  25% { right: 25%; top: 42%; }
+  37% { right: 35%; top: 38%; }
+  50% { right: 45%; top: 45%; }
+  62% { right: 55%; top: 42%; }
+  75% { right: 65%; top: 48%; }
+  87% { right: 75%; top: 45%; }
+  100% { right: 5%; top: 40%; }
+}
+
+@keyframes screenSaver1 {
+  0% { left: 2%; top: 5%; }
+  10% { left: 12%; top: 5%; }
+  20% { left: 22%; top: 10%; }
+  30% { left: 32%; top: 8%; }
+  40% { left: 42%; top: 15%; }
+  50% { left: 52%; top: 12%; }
+  60% { left: 62%; top: 20%; }
+  70% { left: 72%; top: 18%; }
+  80% { left: 82%; top: 25%; }
+  90% { left: 90%; top: 20%; }
+  100% { left: 2%; top: 5%; }
+}
+
+@keyframes screenSaver2 {
+  0% { left: 5%; top: 80%; }
+  15% { left: 20%; top: 75%; }
+  30% { left: 35%; top: 80%; }
+  45% { left: 50%; top: 78%; }
+  60% { left: 65%; top: 82%; }
+  75% { left: 80%; top: 80%; }
+  90% { left: 88%; top: 75%; }
+  100% { left: 5%; top: 80%; }
+}
+
+@keyframes screenSaver3 {
+  0% { right: 5%; top: 40%; }
+  12% { right: 15%; top: 35%; }
+  25% { right: 25%; top: 42%; }
+  37% { right: 35%; top: 38%; }
+  50% { right: 45%; top: 45%; }
+  62% { right: 55%; top: 42%; }
+  75% { right: 65%; top: 48%; }
+  87% { right: 75%; top: 45%; }
+  100% { right: 5%; top: 40%; }
+}
+
+@keyframes classicScreenSaver {
+  0% { left: 5%; top: 10%; }
+  5% { left: 15%; top: 8%; }
+  10% { left: 25%; top: 15%; }
+  15% { left: 35%; top: 12%; }
+  20% { left: 45%; top: 20%; }
+  25% { left: 55%; top: 18%; }
+  30% { left: 65%; top: 25%; }
+  35% { left: 75%; top: 22%; }
+  40% { left: 82%; top: 30%; }
+  45% { left: 85%; top: 40%; }
+  50% { left: 80%; top: 50%; }
+  55% { left: 70%; top: 55%; }
+  60% { left: 60%; top: 60%; }
+  65% { left: 50%; top: 65%; }
+  70% { left: 40%; top: 62%; }
+  75% { left: 30%; top: 70%; }
+  80% { left: 20%; top: 68%; }
+  85% { left: 10%; top: 75%; }
+  90% { left: 8%; top: 50%; }
+  95% { left: 12%; top: 25%; }
+  100% { left: 5%; top: 10%; }
 }
