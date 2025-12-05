@@ -3,26 +3,184 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registrer</title>
+    <title>Register</title>
+
+    <style>
+      /* Container so drifting elements don't overlap page boundaries weirdly */
+      .floating-area {
+        position: relative;
+        width: 100%;
+        height: 90vh;
+        overflow: hidden;
+      }
+
+      .form-group {
+        position: absolute;
+        padding: 10px;
+        border: 3px solid #00ff00;
+        background: rgba(255, 255, 0, 0.7);
+        font-weight: bold;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+
+      /* Four independent drifting animations */
+      @keyframes drift1 {
+        0% {
+          left: 5%;
+          top: 10%;
+        }
+        25% {
+          left: 70%;
+          top: 20%;
+        }
+        50% {
+          left: 40%;
+          top: 70%;
+        }
+        75% {
+          left: 10%;
+          top: 50%;
+        }
+        100% {
+          left: 5%;
+          top: 10%;
+        }
+      }
+
+      @keyframes drift2 {
+        0% {
+          left: 60%;
+          top: 10%;
+        }
+        25% {
+          left: 20%;
+          top: 30%;
+        }
+        50% {
+          left: 75%;
+          top: 60%;
+        }
+        75% {
+          left: 40%;
+          top: 80%;
+        }
+        100% {
+          left: 60%;
+          top: 10%;
+        }
+      }
+
+      @keyframes drift3 {
+        0% {
+          left: 30%;
+          top: 50%;
+        }
+        25% {
+          left: 80%;
+          top: 40%;
+        }
+        50% {
+          left: 20%;
+          top: 75%;
+        }
+        75% {
+          left: 65%;
+          top: 15%;
+        }
+        100% {
+          left: 30%;
+          top: 50%;
+        }
+      }
+
+      @keyframes drift4 {
+        0% {
+          left: 50%;
+          top: 20%;
+        }
+        25% {
+          left: 10%;
+          top: 70%;
+        }
+        50% {
+          left: 60%;
+          top: 85%;
+        }
+        75% {
+          left: 85%;
+          top: 35%;
+        }
+        100% {
+          left: 50%;
+          top: 20%;
+        }
+      }
+
+      .g1 {
+        animation-name: drift1;
+        animation-duration: 20s;
+      }
+      .g2 {
+        animation-name: drift2;
+        animation-duration: 24s;
+      }
+      .g3 {
+        animation-name: drift3;
+        animation-duration: 28s;
+      }
+      .g4 {
+        animation-name: drift4;
+        animation-duration: 26s;
+      }
+
+      /* Make labels/inputs readable inside moving blocks */
+      .form-group label,
+      .form-group input {
+        display: block;
+        margin: 5px 0;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+    </style>
   </head>
   <body>
     <a href="/signin">Sign in!</a>
     <a href="/fact">Cat facts</a>
     <a href="/">Home</a>
+
     <h1>Opprett bruker</h1>
-    <form method="post">
-      <label for="">Fornavn</label>
-      <input type="text" name="first_name" required />
-      <br />
-      <label for="">Etternavn</label>
-      <input type="text" name="last_name" required />
-      <br />
-      <label for="">E-post</label>
-      <input type="email" name="email" required />
-      <br />
-      <label for="">Passord</label>
-      <input type="password" name="password" required />
-      <button type="submit">Submit</button>
+
+    <form method="post" class="floating-area">
+      <div class="form-group g1">
+        <label>Fornavn</label>
+        <input type="text" name="first_name" required />
+      </div>
+
+      <div class="form-group g2">
+        <label>Etternavn</label>
+        <input type="text" name="last_name" required />
+      </div>
+
+      <div class="form-group g3">
+        <label>E-post</label>
+        <input type="email" name="email" required />
+      </div>
+
+      <div class="form-group g4">
+        <label>Passord</label>
+        <input type="password" name="password" required />
+      </div>
+
+      <!-- Submit button stays still -->
+      <button
+        type="submit"
+        style="margin-top: 20px; position: relative; z-index: 1000"
+      >
+        Submit
+      </button>
     </form>
   </body>
 </html>
