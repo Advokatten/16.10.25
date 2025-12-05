@@ -68,7 +68,7 @@ app.post("/signin", async (req, res) => {
   }
 
   if (
-    !dbUserInfo[0].email === "hello@hello.no" &&
+    !dbUserInfo[0].email === "Olanormann@gmail.com" &&
     !dbUserInfo[0].password === "Kappa123"
   ) {
     res.redirect("/signin");
