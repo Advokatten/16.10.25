@@ -5,6 +5,118 @@ body {
   text-shadow: 2px 2px 4px #ff0000, -2px -2px 4px #0000ff;
 }
 
+/* INDEX.EJS STYLES */
+h1 {
+  font-size: 72px;
+  color: #00ff00;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ffff00;
+  font-weight: 1000;
+  letter-spacing: 8px;
+  line-height: 1.2;
+  background: repeating-linear-gradient(
+    90deg,
+    #ff00ff,
+    #ff00ff 10px,
+    #00ffff 10px,
+    #00ffff 20px
+  );
+  padding: 20px;
+  border: 3px dotted #ffff00;
+  animation: crazySpin 0.3s linear infinite, crazyMove 3s linear infinite;
+  position: fixed;
+}
+
+@keyframes crazySpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes crazyMove {
+  0% { left: 0; top: 0; }
+  10% { left: 20%; top: 15%; }
+  20% { left: 40%; top: 5%; }
+  30% { left: 60%; top: 25%; }
+  40% { left: 80%; top: 10%; }
+  50% { left: 50%; top: 40%; }
+  60% { left: 20%; top: 30%; }
+  70% { left: 70%; top: 50%; }
+  80% { left: 30%; top: 20%; }
+  90% { left: 60%; top: 35%; }
+  100% { left: 0; top: 0; }
+}
+
+.car-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 40px;
+  background: repeating-linear-gradient(
+    45deg,
+    #00ffff,
+    #00ffff 15px,
+    #ff00ff 15px,
+    #ff00ff 30px
+  );
+  border: 10px inset #ffff00;
+}
+
+.car-card div {
+  background: #00ffff;
+  border: 5px double #ff0000;
+  padding: 20px;
+  transform: rotate(3deg) perspective(500px) rotateY(-10deg);
+  box-shadow: 
+    -5px 5px 0 #ff00ff,
+    -10px 10px 0 #ffff00,
+    -15px 15px 0 #00ff00;
+  transition: all 0.3s;
+  filter: drop-shadow(2px 2px 4px rgba(255, 0, 255, 0.5));
+}
+
+.car-card div:hover {
+  transform: rotate(-3deg) perspective(500px) rotateY(10deg) scale(0.95);
+  box-shadow: 
+    5px -5px 0 #ff00ff,
+    10px -10px 0 #ffff00,
+    15px -15px 0 #00ff00;
+}
+
+.car-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff00ff;
+  line-height: 2;
+  writing-mode: horizontal-tb;
+}
+
+.car-card li {
+  background: #ffff00;
+  padding: 10px;
+  margin: 8px 0;
+  border: 3px solid #ff0000;
+  text-decoration: line-through overline #ff00ff;
+  font-style: italic;
+  transform: scaleX(-1);
+}
+
+.car-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border: 6px solid #ff00ff;
+  filter: invert(0.5) sepia(1) saturate(2) hue-rotate(90deg);
+  animation: flicker 0.3s ease-in-out infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* FACT.EJS STYLES */
 .header {
   display: flex;
   justify-content: center;
@@ -55,6 +167,7 @@ body {
   top: 0;
 }
 
+/* ALL LINKS */
 a {
   color: #ff0000;
   background: #ffff00;
@@ -65,100 +178,78 @@ a {
   border: 2px solid #00ff00;
   margin: 5px;
   display: inline-block;
-  transform: rotate(2deg);
   position: fixed;
 }
 
-a:nth-child(1) {
-  animation: screenSaver1 6s linear infinite;
+/* INDEX.EJS LINKS */
+.car-card ~ a:nth-child(1),
+body > a:nth-child(1) {
+  animation: eraticLink1 2.5s linear infinite;
 }
 
-a:nth-child(2) {
-  animation: screenSaver2 7s linear infinite;
+body > a:nth-child(2) {
+  animation: eraticLink2 3s linear infinite;
 }
 
-a:nth-child(3) {
-  animation: screenSaver3 8s linear infinite;
+body > a:nth-child(3) {
+  animation: eraticLink3 3.5s linear infinite;
+}
+
+/* FACT.EJS LINKS */
+.header ~ a:nth-child(1),
+.test ~ a:nth-child(1) {
+  animation: factLink1 4s linear infinite;
+}
+
+.header ~ a:nth-child(2),
+.test ~ a:nth-child(2) {
+  animation: factLink2 5s linear infinite;
+}
+
+.header ~ a:nth-child(3),
+.test ~ a:nth-child(3) {
+  animation: factLink3 6s linear infinite;
 }
 
 a:hover {
   background: #00ff00;
   color: #ff00ff;
-  transform: rotate(-5deg) scale(1.2);
 }
 
-@keyframes bounce1 {
-  0% { left: 2%; top: 5%; }
-  10% { left: 12%; top: 5%; }
-  20% { left: 22%; top: 10%; }
-  30% { left: 32%; top: 8%; }
-  40% { left: 42%; top: 15%; }
-  50% { left: 52%; top: 12%; }
-  60% { left: 62%; top: 20%; }
-  70% { left: 72%; top: 18%; }
-  80% { left: 82%; top: 25%; }
-  90% { left: 90%; top: 20%; }
-  100% { left: 2%; top: 5%; }
+@keyframes eraticLink1 {
+  0% { left: 5%; top: 10%; opacity: 0; transform: rotate(0deg); }
+  5% { opacity: 1; }
+  15% { left: 25%; top: 30%; transform: rotate(90deg); }
+  30% { left: 70%; top: 15%; transform: rotate(180deg); }
+  45% { left: 40%; top: 60%; transform: rotate(270deg); }
+  60% { left: 80%; top: 45%; opacity: 1; transform: rotate(360deg); }
+  80% { left: 15%; top: 75%; transform: rotate(450deg); opacity: 1; }
+  95% { opacity: 0; }
+  100% { left: 5%; top: 10%; opacity: 0; transform: rotate(540deg); }
 }
 
-@keyframes bounce2 {
-  0% { left: 5%; top: 80%; }
-  15% { left: 20%; top: 75%; }
-  30% { left: 35%; top: 80%; }
-  45% { left: 50%; top: 78%; }
-  60% { left: 65%; top: 82%; }
-  75% { left: 80%; top: 80%; }
-  90% { left: 88%; top: 75%; }
-  100% { left: 5%; top: 80%; }
+@keyframes eraticLink2 {
+  0% { right: 8%; top: 50%; opacity: 0; transform: rotate(0deg); }
+  8% { opacity: 1; }
+  20% { right: 35%; top: 20%; transform: rotate(120deg); }
+  35% { right: 15%; top: 55%; transform: rotate(240deg); }
+  50% { right: 75%; top: 35%; transform: rotate(360deg); }
+  65% { right: 40%; top: 80%; opacity: 1; transform: rotate(480deg); }
+  85% { right: 20%; top: 5%; opacity: 1; transform: rotate(600deg); }
+  95% { opacity: 0; }
+  100% { right: 8%; top: 50%; opacity: 0; transform: rotate(720deg); }
 }
 
-@keyframes bounce3 {
-  0% { right: 5%; top: 40%; }
-  12% { right: 15%; top: 35%; }
-  25% { right: 25%; top: 42%; }
-  37% { right: 35%; top: 38%; }
-  50% { right: 45%; top: 45%; }
-  62% { right: 55%; top: 42%; }
-  75% { right: 65%; top: 48%; }
-  87% { right: 75%; top: 45%; }
-  100% { right: 5%; top: 40%; }
-}
-
-@keyframes screenSaver1 {
-  0% { left: 2%; top: 5%; }
-  10% { left: 12%; top: 5%; }
-  20% { left: 22%; top: 10%; }
-  30% { left: 32%; top: 8%; }
-  40% { left: 42%; top: 15%; }
-  50% { left: 52%; top: 12%; }
-  60% { left: 62%; top: 20%; }
-  70% { left: 72%; top: 18%; }
-  80% { left: 82%; top: 25%; }
-  90% { left: 90%; top: 20%; }
-  100% { left: 2%; top: 5%; }
-}
-
-@keyframes screenSaver2 {
-  0% { left: 5%; top: 80%; }
-  15% { left: 20%; top: 75%; }
-  30% { left: 35%; top: 80%; }
-  45% { left: 50%; top: 78%; }
-  60% { left: 65%; top: 82%; }
-  75% { left: 80%; top: 80%; }
-  90% { left: 88%; top: 75%; }
-  100% { left: 5%; top: 80%; }
-}
-
-@keyframes screenSaver3 {
-  0% { right: 5%; top: 40%; }
-  12% { right: 15%; top: 35%; }
-  25% { right: 25%; top: 42%; }
-  37% { right: 35%; top: 38%; }
-  50% { right: 45%; top: 45%; }
-  62% { right: 55%; top: 42%; }
-  75% { right: 65%; top: 48%; }
-  87% { right: 75%; top: 45%; }
-  100% { right: 5%; top: 40%; }
+@keyframes eraticLink3 {
+  0% { left: 50%; top: 25%; opacity: 0; transform: rotate(0deg); }
+  6% { opacity: 1; }
+  18% { left: 12%; top: 60%; transform: rotate(135deg); }
+  32% { left: 85%; top: 15%; transform: rotate(270deg); }
+  48% { left: 30%; top: 70%; transform: rotate(405deg); }
+  63% { left: 75%; top: 20%; opacity: 1; transform: rotate(540deg); }
+  78% { left: 20%; top: 50%; transform: rotate(675deg); }
+  92% { opacity: 0; }
+  100% { left: 50%; top: 25%; opacity: 0; transform: rotate(810deg); }
 }
 
 @keyframes classicScreenSaver {
@@ -183,4 +274,37 @@ a:hover {
   90% { left: 8%; top: 50%; }
   95% { left: 12%; top: 25%; }
   100% { left: 5%; top: 10%; }
+}
+
+@keyframes factLink1 {
+  0% { left: 8%; top: 15%; opacity: 0; transform: rotate(0deg); }
+  5% { opacity: 1; }
+  20% { left: 45%; top: 40%; transform: rotate(120deg); }
+  40% { left: 75%; top: 25%; transform: rotate(240deg); }
+  60% { left: 25%; top: 65%; opacity: 1; transform: rotate(360deg); }
+  80% { left: 60%; top: 50%; transform: rotate(480deg); }
+  95% { opacity: 0; }
+  100% { left: 8%; top: 15%; opacity: 0; transform: rotate(600deg); }
+}
+
+@keyframes factLink2 {
+  0% { right: 12%; top: 20%; opacity: 0; transform: rotate(0deg); }
+  6% { opacity: 1; }
+  18% { right: 50%; top: 45%; transform: rotate(100deg); }
+  36% { right: 25%; top: 30%; transform: rotate(200deg); }
+  54% { right: 70%; top: 70%; opacity: 1; transform: rotate(300deg); }
+  72% { right: 40%; top: 55%; transform: rotate(400deg); }
+  90% { opacity: 0; }
+  100% { right: 12%; top: 20%; opacity: 0; transform: rotate(500deg); }
+}
+
+@keyframes factLink3 {
+  0% { left: 50%; top: 45%; opacity: 0; transform: rotate(0deg); }
+  7% { opacity: 1; }
+  21% { left: 20%; top: 20%; transform: rotate(110deg); }
+  42% { left: 80%; top: 55%; transform: rotate(220deg); }
+  63% { left: 35%; top: 35%; opacity: 1; transform: rotate(330deg); }
+  84% { left: 70%; top: 75%; transform: rotate(440deg); }
+  96% { opacity: 0; }
+  100% { left: 50%; top: 45%; opacity: 0; transform: rotate(550deg); }
 }
