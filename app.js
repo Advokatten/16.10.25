@@ -9,7 +9,12 @@ const app = express();
 const port = 3000;
 // importerer funkjson som lager kobling til databasen.
 const { createConnection } = require("./database/database");
-const { getUserData, insertIntoUserDatabase } = require("./database/services");
+const {
+  getUserData,
+  insertIntoUserDatabase,
+  insertIntoQuestionsDatabase,
+  insertIntoUtviklerDatabase,
+} = require("./database/services");
 
 // konfigurerer EJS som malmotor.
 app.set("view engine", "ejs");
@@ -39,14 +44,19 @@ app.get("/registerUser", (req, res) => {
 app.post("/registerUser", async (req, res) => {
   const connection = await createConnection();
   const input = req.body;
-  await insertIntoUserDatabase(
-    connection,
-    input.first_name,
-    input.last_name,
-    input.email,
-    input.password,
-  );
+  await insertIntoUtviklerDatabase(connection, input.email, input.password);
   res.redirect("/registerUser");
+});
+
+app.post("/questions", async (req, res) => {
+  const connection = await createConnection();
+  const input = req.body;
+  await insertIntoQuestionsDatabase(connection, input.question_text);
+  res.redirect("/questions");
+});
+
+app.get("/questions", async (req, res) => {
+  res.render("questions");
 });
 
 app.get("/signin", (req, res) => {
