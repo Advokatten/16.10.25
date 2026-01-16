@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
+    <title><%-title %></title>
 
     <style>
       /* Container so drifting elements don't overlap page boundaries weirdly */
@@ -150,18 +150,17 @@
     <a href="/signin">Sign in!</a>
     <a href="/fact">Cat facts</a>
     <a href="/">Home</a>
-    <a href="/questions">Questions</a>
 
-    <h1>Opprett bruker</h1>
+    <h1 class="header"><%= heading %></h1>
 
     <form method="post" class="floating-area">
       <div class="form-group g3">
-        <label>E-post</label>
+        <label for="email">E-post</label>
         <input type="email" name="email" required />
       </div>
 
       <div class="form-group g4">
-        <label>Passord</label>
+        <label for="passowrd">Passord</label>
         <input type="password" name="password" required />
       </div>
 

@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Logg inn</title>
+    <title><%-title %></title>
   </head>
   <body>
     <a href="/registerUser">Til sign up!</a>
     <a href="/fact">Cat facts</a>
     <a href="/">Home</a>
-    <a href="/questions">Questions</a>
-    <h2>Sign in!</h2>
-    <form method="post">
-      <label for="">E-post</label>
+
+    <h1 class="header"><%= heading %></h1>
+    <form method="post" action="/signin">
+      <label for="email">E-post</label>
       <input type="email" name="email" required />
       <br />
-      <label for="">Passord</label>
+      <label for="password">Passord</label>
       <input type="password" name="password" required />
       <button type="submit">Submit</button>
     </form>

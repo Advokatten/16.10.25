@@ -1,6 +1,6 @@
 async function getUserData(connection, email) {
   const [results] = await connection.query(
-    `SELECT * FROM user WHERE email = "${email}"`,
+    `SELECT * FROM advokat_user WHERE email = "${email}"`,
   );
   return results;
 }
@@ -32,9 +32,40 @@ async function insertIntoUtviklerDatabase(connection, email, password) {
   return await connection.execute(query, [email, password]);
 }
 
+async function handleSigninPost(req, res, connection, bcrypt) {
+  const userData = req.body;
+  const dbUserInfo = await getUserData(connection, userData.email);
+
+  if (dbUserInfo.length > 0 && dbUserInfo[0].email === userData.email) {
+    const passwordMatch = await bcrypt.compare(
+      userData.password,
+      dbUserInfo[0].password,
+    );
+    if (passwordMatch) {
+      console.log("Login successful!");
+      res.redirect("/dashboard");
+    } else {
+      console.log("Login failed!");
+      res.redirect("/signin");
+    }
+  } else {
+    console.log("Login failed!");
+    res.redirect("/signin");
+  }
+}
+
+async function handleSigninGet(req, res) {
+  res.render("signin", {
+    title: "Log inn",
+    heading: "Log inn",
+  });
+}
+
 module.exports = {
   getUserData,
   insertIntoUserDatabase,
   insertIntoQuestionsDatabase,
   insertIntoUtviklerDatabase,
+  handleSigninPost,
+  handleSigninGet,
 };
