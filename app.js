@@ -1,42 +1,29 @@
-﻿// importerer pakker.
-const express = require("express");
+﻿const express = require("express");
 const mysql = require("mysql2/promise");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const saltRounds = 12;
 const app = express();
 
-// Definerer hvilken port som skal være åpen for å motta forespørsler (req) fra klient.
 const port = 3000;
-// importerer funkjson som lager kobling til databasen.
 const { createConnection } = require("./database/database");
 const {
   getUserData,
-  insertIntoUserDatabase,
+
   insertIntoQuestionsDatabase,
   insertIntoUtviklerDatabase,
-  handleSigninPost,
-  handleSigninGet,
+  signIn,
+  signInGet,
 } = require("./database/services");
 
-// konfigurerer EJS som malmotor.
 app.set("view engine", "ejs");
 
-// serverer statiske filer.
 app.use(express.static("public"));
-// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded());
 
-// parse application/json
 app.use(bodyParser.json());
 
-// Definerer hva som skal skje når vi får inn en forespørsel (req) med GET motode i http header
 app.get("/", async (req, res) => {
-  // åpner en ny mysql tilkobling
-  const connection = await createConnection();
-  // henter data fra databasen.
-  const results = await getUserData(connection);
-  // definerer hvordan vi skal svare på forsepørslen (req) fra klienten på denne ruten.
   res.render("index", {
     title: "Velkommen",
     heading: "Velkommen",
@@ -65,13 +52,13 @@ app.post("/dashboard", async (req, res) => {
   res.redirect("/dashboard");
 });
 
-app.post("/signin", async (req, res) => {
+app.post("/signIn", async (req, res) => {
   const connection = await createConnection();
-  await handleSigninPost(req, res, connection, bcrypt);
+  await signIn(req, res, connection, bcrypt);
 });
 
-app.get("/signin", async (req, res) => {
-  await handleSigninGet(req, res);
+app.get("/signIn", async (req, res) => {
+  await signInGet(req, res);
 });
 
 app.get("/dashboard", async (req, res) => {

@@ -5,23 +5,6 @@ async function getUserData(connection, email) {
   return results;
 }
 
-async function insertIntoUserDatabase(
-  connection,
-  first_name,
-  last_name,
-  email,
-  password,
-) {
-  const query =
-    "INSERT INTO user (first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
-  return await connection.execute(query, [
-    first_name,
-    last_name,
-    email,
-    password,
-  ]);
-}
-
 async function insertIntoQuestionsDatabase(connection, question_text) {
   const query = "INSERT INTO questions (question_text) VALUES (?)";
   return await connection.execute(query, [question_text]);
@@ -32,7 +15,7 @@ async function insertIntoUtviklerDatabase(connection, email, password) {
   return await connection.execute(query, [email, password]);
 }
 
-async function handleSigninPost(req, res, connection, bcrypt) {
+async function signIn(req, res, connection, bcrypt) {
   const userData = req.body;
   const dbUserInfo = await getUserData(connection, userData.email);
 
@@ -54,7 +37,7 @@ async function handleSigninPost(req, res, connection, bcrypt) {
   }
 }
 
-async function handleSigninGet(req, res) {
+async function signInGet(req, res) {
   res.render("signin", {
     title: "Log inn",
     heading: "Log inn",
@@ -63,9 +46,8 @@ async function handleSigninGet(req, res) {
 
 module.exports = {
   getUserData,
-  insertIntoUserDatabase,
   insertIntoQuestionsDatabase,
   insertIntoUtviklerDatabase,
-  handleSigninPost,
-  handleSigninGet,
+  signIn,
+  signInGet,
 };
