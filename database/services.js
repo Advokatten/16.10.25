@@ -26,6 +26,9 @@ async function signIn(req, res, connection, bcrypt) {
     );
     if (passwordMatch) {
       console.log("Login successful!");
+      req.session.userId = dbUserInfo[0].id;
+      req.session.email = dbUserInfo[0].email;
+      req.session.isAuthenticated = true;
       res.redirect("/dashboard");
     } else {
       console.log("Login failed!");
