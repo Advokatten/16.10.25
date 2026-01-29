@@ -29,7 +29,8 @@ app.use(
   session({
     secret: 'my-secret-key',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    maxAge: 300000,
   })
 )
 
@@ -78,14 +79,7 @@ app.post("/signIn", async (req, res) => {
 app.get("/signIn", async (req, res) => {
   await signInGet(req, res);
 });
-app.get("/signOut", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.send("Error logging out");
-    }
-    res.redirect("/");
-  });
-});
+
 app.get("/dashboard", checkAuth, async (req, res) => {
   res.render("dashboard", {
     title: "Spørsmål",
@@ -93,6 +87,20 @@ app.get("/dashboard", checkAuth, async (req, res) => {
     email: req.session.email,
   });
 });
+
+app.get("/signOut", (req, res) => {
+  req.session.destroy((err) => {
+    res.clearCookie("connect.sid");
+    if (err) {
+      return res.send("Error logging out");
+    }
+    res.redirect("/");
+  });
+});
+
+
+
+
 
 app.get("/about", async (req, res) => {
   res.render("about");
