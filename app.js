@@ -90,7 +90,6 @@ app.get("/dashboard", checkAuth, async (req, res) => {
 
 app.get("/signOut", (req, res) => {
   req.session.destroy((err) => {
-    res.clearCookie("connect.sid");
     if (err) {
       return res.send("Error logging out");
     }
