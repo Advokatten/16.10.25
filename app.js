@@ -2,7 +2,7 @@
 const mysql = require("mysql2/promise");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
-const session = require('express-session')
+const session = require("express-session");
 const saltRounds = 12;
 const app = express();
 
@@ -10,35 +10,34 @@ const port = 3000;
 const { createConnection } = require("./database/database");
 const {
   getUserData,
-
   insertIntoQuestionsDatabase,
   insertIntoUtviklerDatabase,
   signIn,
   signInGet,
+  showUserMessage,
 } = require("./database/services");
 
 app.set("view engine", "ejs");
-app.set('trust proxy', 1)
+app.set("trust proxy", 1);
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded());
 
 app.use(bodyParser.json());
 
-
 app.use(
   session({
-    secret: 'my-secret-key',
+    secret: "my-secret-key",
     resave: false,
     saveUninitialized: false,
     maxAge: 300000,
-  })
-)
+  }),
+);
 
 const checkAuth = (req, res, next) => {
   if (req.session.isAuthenticated) {
     next();
   } else {
-    res.redirect('/signIn');
+    res.redirect("/signIn");
   }
 };
 
@@ -64,6 +63,14 @@ app.post("/registerUser", async (req, res) => {
   res.redirect("/registerUser");
 });
 
+app.get("/dashboard", checkAuth, async (req, res) => {
+  res.render("dashboard", {
+    title: "Spørsmål",
+    heading: "Spørsmål",
+    email: req.session.email,
+  });
+});
+
 app.post("/dashboard", checkAuth, async (req, res) => {
   const connection = await createConnection();
   const input = req.body;
@@ -80,14 +87,6 @@ app.get("/signIn", async (req, res) => {
   await signInGet(req, res);
 });
 
-app.get("/dashboard", checkAuth, async (req, res) => {
-  res.render("dashboard", {
-    title: "Spørsmål",
-    heading: "Spørsmål",
-    email: req.session.email,
-  });
-});
-
 app.get("/signOut", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
@@ -96,10 +95,6 @@ app.get("/signOut", (req, res) => {
     res.redirect("/");
   });
 });
-
-
-
-
 
 app.get("/about", async (req, res) => {
   res.render("about");
