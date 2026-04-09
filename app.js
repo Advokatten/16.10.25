@@ -3,6 +3,7 @@ const mysql = require("mysql2/promise");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
+const expressLayouts = require('express-ejs-layouts');
 const saltRounds = 12;
 const app = express();
 
@@ -21,6 +22,7 @@ app.set("view engine", "ejs");
 app.set("trust proxy", 1);
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded());
+app.use(expressLayouts);
 
 app.use(bodyParser.json());
 
