@@ -33,6 +33,8 @@ app.use(
   }),
 );
 
+
+
 const checkAuth = (req, res, next) => {
   if (req.session.isAuthenticated) {
     next();
@@ -117,5 +119,5 @@ async function getCatFact() {
 }
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  
 });
