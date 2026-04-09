@@ -47,10 +47,17 @@ async function signInGet(req, res) {
   });
 }
 
+async function getAllMessages(connection) {
+  const query = "SELECT * FROM questions ORDER BY id DESC";
+  const [results] = await connection.execute(query);
+  return results;
+}
+
 module.exports = {
   getUserData,
   insertIntoQuestionsDatabase,
   insertIntoUtviklerDatabase,
   signIn,
   signInGet,
+  getAllMessages,
 };

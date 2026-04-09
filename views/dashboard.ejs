@@ -29,5 +29,20 @@
       
       </form>
     </form>
+
+    <div>
+      <h2>Sendte spørsmål</h2>
+      <% if (messages && messages.length > 0) { %>
+        <ul>
+          <% messages.forEach(message => { %>
+            <li>
+              <p><strong>Melding:</strong> <%= message.question_text %></p>
+            </li>
+          <% }); %>
+        </ul>
+      <% } else { %>
+        <p>Ingen spørsmål sendt ennå.</p>
+      <% } %>
+    </div>
   </body>
 </html>

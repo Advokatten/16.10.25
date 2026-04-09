@@ -16,6 +16,7 @@ const {
   signIn,
   signInGet,
   showUserMessage,
+  getAllMessages,
 } = require("./database/services");
 
 app.set("view engine", "ejs");
@@ -68,10 +69,13 @@ app.post("/registerUser", async (req, res) => {
 });
 
 app.get("/dashboard", checkAuth, async (req, res) => {
+  const connection = await createConnection();
+  const messages = await getAllMessages(connection);
   res.render("dashboard", {
     title: "Spørsmål",
     heading: "Spørsmål",
     email: req.session.email,
+    messages: messages,
   });
 });
 
