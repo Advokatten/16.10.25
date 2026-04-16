@@ -3,6 +3,11 @@ async function insertIntoQuestionsDatabase(connection, question_text) {
   return await connection.execute(query, [question_text]);
 }
 
+async function userRequestIntoDatabase(connection, requests) {
+  const query = "INSERT INTO user_requests (request_text) VALUES (?)";
+  return await connection.execute(query, [requests]);
+}
+
 async function getUserData(connection, email) {
   const [results] = await connection.query(
     `SELECT * FROM advokat_user WHERE email = "${email}"`,

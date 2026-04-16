@@ -1,5 +1,4 @@
-@import "tailwindcss";
-
+/*
 
 body {
   background: #1a1a2e
@@ -13,7 +12,7 @@ body {
     -2px -2px 4px #0000ff;
 }
 
-/* INDEX.EJS STYLES */
+
 h1 {
   font-size: 72px;
   color: #00ff00;
@@ -170,7 +169,7 @@ h1 {
   }
 }
 
-/* FACT.EJS STYLES */
+
 .header {
   display: flex;
   justify-content: center;
@@ -235,7 +234,7 @@ h1 {
   top: 0;
 }
 
-/* ALL LINKS */
+
 a {
   color: #ff0000;
   background: #ffff00;
@@ -249,7 +248,7 @@ a {
   position: fixed;
 }
 
-/* INDEX.EJS LINKS */
+
 .car-card ~ a:nth-child(1),
 body > a:nth-child(1) {
   animation: eraticLink1 2.5s linear infinite;
@@ -263,7 +262,7 @@ body > a:nth-child(3) {
   animation: eraticLink3 3.5s linear infinite;
 }
 
-/* FACT.EJS LINKS */
+
 .header ~ a:nth-child(1),
 .test ~ a:nth-child(1) {
   animation: factLink1 4s linear infinite;
@@ -724,7 +723,7 @@ a:hover {
 }
 .drift-form {
   position: relative;
-  height: 80vh; /* so items can move around inside */
+  height: 80vh; 
 }
 
 .drift-item {
@@ -732,7 +731,7 @@ a:hover {
   animation: driftMove 20s linear infinite alternate;
 }
 
-/* Stagger movements so they spread apart */
+
 .drift-item:nth-child(1) {
   animation-duration: 25s;
   animation-delay: 0s;
@@ -772,3 +771,4 @@ a:hover {
     top: 80%;
   }
 }
+*/

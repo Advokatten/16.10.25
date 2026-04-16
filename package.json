@@ -4,6 +4,8 @@
   "description": "",
   "main": "script.js",
   "scripts": {
+    "build:css": "tailwindcss -i ./public/css/input.css -o ./public/css/styles.css",
+    "watch:css": "tailwindcss -i ./public/css/input.css -o ./public/css/styles.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const expressLayouts = require("express-ejs-layouts");
 const saltRounds = 12;
-const tailwindcss = require("tailwindcss");
+
 const app = express();
 
 const port = 3000;
@@ -16,6 +16,7 @@ const {
   signIn,
   signInGet,
   getAllMessages,
+  userRequestIntoDatabase,
 } = require("./database/services");
 
 app.set("view engine", "ejs");
@@ -23,7 +24,7 @@ app.set("trust proxy", 1);
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded());
 app.use(expressLayouts);
-app.use(tailwindcss);
+
 app.use(bodyParser.json());
 
 app.use(
@@ -81,6 +82,24 @@ app.post("/dashboard", checkAuth, async (req, res) => {
   const input = req.body;
   await insertIntoQuestionsDatabase(connection, input.question_text);
   res.redirect("/dashboard");
+});
+
+app.get("/requests", checkAuth, async (req, res) => {
+  const connection = await createConnection();
+  const messages = await getAllMessages(connection);
+  res.render("requests", {
+    title: "Forespørsmål",
+    heading: "Hva vil du at vi skal gjøre?",
+    email: req.session.email,
+    messages: messages,
+  });
+});
+
+app.post("/requests", checkAuth, async (req, res) => {
+  const connection = await createConnection();
+  const input = req.body;
+  await userRequestIntoDatabase(connection, input.question_text);
+  res.redirect("/requests");
 });
 
 app.post("/signIn", async (req, res) => {
