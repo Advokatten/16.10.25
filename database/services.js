@@ -1,13 +1,13 @@
+async function insertIntoQuestionsDatabase(connection, question_text) {
+  const query = "INSERT INTO questions (question_text) VALUES (?)";
+  return await connection.execute(query, [question_text]);
+}
+
 async function getUserData(connection, email) {
   const [results] = await connection.query(
     `SELECT * FROM advokat_user WHERE email = "${email}"`,
   );
   return results;
-}
-
-async function insertIntoQuestionsDatabase(connection, question_text) {
-  const query = "INSERT INTO questions (question_text) VALUES (?)";
-  return await connection.execute(query, [question_text]);
 }
 
 async function insertIntoUtviklerDatabase(connection, email, password) {
