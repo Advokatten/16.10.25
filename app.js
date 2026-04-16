@@ -3,19 +3,18 @@ const mysql = require("mysql2/promise");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
-const expressLayouts = require('express-ejs-layouts');
+const expressLayouts = require("express-ejs-layouts");
 const saltRounds = 12;
+const tailwindcss = require("tailwindcss");
 const app = express();
 
 const port = 3000;
 const { createConnection } = require("./database/database");
 const {
-  getUserData,
   insertIntoQuestionsDatabase,
   insertIntoUtviklerDatabase,
   signIn,
   signInGet,
-  showUserMessage,
   getAllMessages,
 } = require("./database/services");
 
@@ -24,7 +23,7 @@ app.set("trust proxy", 1);
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded());
 app.use(expressLayouts);
-
+app.use(tailwindcss);
 app.use(bodyParser.json());
 
 app.use(
@@ -35,8 +34,6 @@ app.use(
     maxAge: 300000,
   }),
 );
-
-
 
 const checkAuth = (req, res, next) => {
   if (req.session.isAuthenticated) {
@@ -124,6 +121,4 @@ async function getCatFact() {
   return data;
 }
 
-app.listen(port, () => {
-  
-});
+app.listen(port, () => {});
