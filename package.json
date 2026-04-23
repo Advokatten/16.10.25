@@ -4,8 +4,8 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "build:css": "tailwindcss -i ./public/css/input.css -o ./public/css/styles.css",
-    "watch:css": "tailwindcss -i ./public/css/input.css -o ./public/css/styles.css --watch",
+    "build:css": "tailwindcss -i ./Public/css/input.css -o ./Public/css/styles.css",
+    "watch:css": "tailwindcss -i ./Public/css/input.css -o ./Public/css/styles.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -20,5 +20,8 @@
     "mysql2": "^3.15.3",
     "nodemon": "^3.1.10",
     "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.4"
   }
 }
