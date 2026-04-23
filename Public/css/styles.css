@@ -21,7 +21,14 @@
   justify-content: center;
 }
 */
+.index-body {
+  background-color: #ffd1dc;
+}
 
+.index-header {
+  display: flex;
+  justify-content: center;
+}
 
 .signin-body {
   background-color: #ffd1dc;
