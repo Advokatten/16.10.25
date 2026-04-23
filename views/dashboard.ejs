@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%-title %></title>
   </head>
-  <body class="dashboard-header">
+  <body class="dashboard-body">
    
-    <div>
-      <h1 class="dashboard-header"><%= heading %></h1>
+    <div class="dashboard-header">
+      <h1 ><%= heading %></h1>
     </div>
-    <div> 
-      <form  method="post" class="dashboard-form">
+    <div class="dashboard-form"> 
+      <form  method="post" >
        <div class="dashboard-form">
         <label for="text">Spørsmål</label>
         <br />
@@ -26,10 +26,12 @@
         </button>
      </form>
    </div>
-   
+   <div class="dashboard-h2-messages-sendt">
+     <h2>Sendte spørsmål</h2>
+   </div>
 
     <div class="dashboard-messages-sendt">
-      <h2 class="dashboard-h2">Sendte spørsmål</h2>
+      
       <% if (messages && messages.length > 0) { %>
         <ul>
           <% messages.forEach(message => { %>

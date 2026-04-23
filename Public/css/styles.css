@@ -74,10 +74,10 @@
 }
 
 .signin-form button {
-  width: 100%; /* Ensure the button takes full width */
-  padding: 0.5rem; /* Add padding for better appearance */
-  box-sizing: border-box; /* Include padding and border in width */
-  margin-top: 0.5rem; /* Add spacing above the button */
+  width: 100%; 
+  padding: 0.5rem; 
+  box-sizing: border-box; 
+  margin-top: 0.5rem; 
 }
 
 .fact-body {
@@ -102,11 +102,40 @@
   border-radius: 3px; 
 }
 
-.dashboard-header {
+.dashboard-body {
   background-color: #ffd1dc;
+  min-height: 100vh;
+  position: relative;
+  padding: 2rem;
+  box-sizing: border-box;
+  /* Remove flex properties from the parent */
 }
 
 .dashboard-header {
   display: flex;
   justify-content: center;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+.dashboard-form {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-h2-messages-sendt {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.dashboard-messages-sendt {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  margin: 3rem auto 0; /* Centers the element itself horizontally */
+  background-color: azure;
+  width: fit-content; /* Fits background to content width */
+  padding: 1rem;
+  height: fit-content; /* Fits background to content height */
 }
