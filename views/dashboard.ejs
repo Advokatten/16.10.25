@@ -5,29 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%-title %></title>
   </head>
-  <body>
+  <body class="dashboard-header">
    
-
-    <h1 class="header"><%= heading %></h1>
-    <form method="post" class="floating-area">
-      <div class="form-group g1">
+    <div>
+      <h1 class="dashboard-header"><%= heading %></h1>
+    </div>
+    <div> 
+      <form  method="post" class="dashboard-form">
+       <div class="dashboard-form">
         <label for="text">Spørsmål</label>
         <br />
         <input type="text" name="question_text" />
-      </div>
+       </div>
 
-      <button
+       <button
         type="submit"
         style="margin-top: 20px; position: relative; z-index: 1000"
-      >
+       >
         Submit
-      </button>
-      
-      
-    </form>
+        </button>
+     </form>
+   </div>
+   
 
-    <div>
-      <h2>Sendte spørsmål</h2>
+    <div class="dashboard-messages-sendt">
+      <h2 class="dashboard-h2">Sendte spørsmål</h2>
       <% if (messages && messages.length > 0) { %>
         <ul>
           <% messages.forEach(message => { %>

@@ -79,3 +79,34 @@
   box-sizing: border-box; /* Include padding and border in width */
   margin-top: 0.5rem; /* Add spacing above the button */
 }
+
+.fact-body {
+  background-color: #ffd1dc;
+  
+}
+
+.fact-header {
+  display: flex;
+  justify-content: center;
+}
+
+.fact-p-div {
+  text-align: center;
+}
+
+.fact-p {
+  display: inline-block;
+  background-color: azure;
+  text-align: center; 
+  padding: 5px 15px; 
+  border-radius: 3px; 
+}
+
+.dashboard-header {
+  background-color: #ffd1dc;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: center;
+}
