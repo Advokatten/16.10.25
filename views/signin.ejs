@@ -3,21 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
     <title><%-title %></title>
   </head>
-  <body>
-    <a href="/registerUser">Til sign up!</a>
-    <a href="/fact">Cat facts</a>
-    <a href="/">Home</a>
+  <body class="signin-body">
+    <div class="signin-header">
+      <h1 class="header"><%= heading %></h1>
+    </div>
 
-    <h1 class="header"><%= heading %></h1>
-    <form method="post" action="/signin">
-      <label for="email">E-post</label>
-      <input type="email" name="email" required />
-      <br />
-      <label for="password">Passord</label>
-      <input type="password" name="password" required />
-      <button type="submit">Submit</button>
-    </form>
+    <div class="signin-form">
+      <form method="post" action="/signin">
+        <label for="email">E-post</label>
+        <input type="email" name="email" required />
+        <br />
+        <label for="password">Passord</label>
+        <input type="password" name="password" required />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
