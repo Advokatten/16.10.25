@@ -21,7 +21,7 @@ const {
 
 app.set("view engine", "ejs");
 app.set("trust proxy", 1);
-app.use(express.static("public"));
+app.use(express.static("Public"));
 app.use(bodyParser.urlencoded());
 app.use(expressLayouts);
 
@@ -47,7 +47,7 @@ const checkAuth = (req, res, next) => {
 app.get("/", async (req, res) => {
   res.render("index", {
     title: "Velkommen",
-    heading: "Velkommen",
+    heading: "Velkommen til CatFacts Code",
   });
 });
 

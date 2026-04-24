@@ -1,46 +1,26 @@
-
-/*
-.signin-body {
-  background-color: #ffd1dc;
-}
-
-.signin-links {
-  
-
-}
-
-
-.signin-header {
-  display: flex;
-  justify-content: center;
-  
-}
-
-.signin-form {
-  display: flex;
-  justify-content: center;
-}
-*/
 .index-body {
-  background-color: #ffd1dc;
+ 
+  background-color: #1A1953;
 }
 
 .index-header {
   display: flex;
   justify-content: center;
+  color: white;
 }
 
 .signin-body {
-  background-color: #ffd1dc;
+  background-color: #1A1953;
   min-height: 100vh;
-  position: relative; 
-  padding: 2rem; 
-  box-sizing: border-box; 
+   
+
+  
 }
 
 .signin-header {
   display: flex;
   justify-content: center;
+  color: white;
 }
 
 .signin-form {
@@ -52,25 +32,26 @@
   max-width: 400px; 
   display: flex;
   justify-content: center;
+  color: white;
 } 
 
 .signin-form form {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: flex-start; /* Align items to the left */
-  gap: 0.5rem; /* Add spacing between elements */
-  width: 100%; /* Ensure the form takes full width */
-  max-width: 300px; /* Limit the width of the form */
+  flex-direction: column; 
+  align-items: flex-start; 
+  gap: 0.5rem; 
+  width: 100%; 
+  max-width: 300px; 
 }
 
 .signin-form label {
-  width: 100%; /* Ensure labels take full width */
+  width: 100%; 
 }
 
 .signin-form input {
-  width: 100%; /* Ensure inputs take full width */
-  box-sizing: border-box; /* Include padding and border in width */
-  padding: 0.5rem; /* Add padding for better appearance */
+  width: 100%; 
+  box-sizing: border-box; 
+  padding: 0.5rem; 
 }
 
 .signin-form button {
@@ -81,13 +62,14 @@
 }
 
 .fact-body {
-  background-color: #ffd1dc;
+  background-color: #1A1953;
   
 }
 
 .fact-header {
   display: flex;
   justify-content: center;
+  color: white;
 }
 
 .fact-p-div {
@@ -103,12 +85,8 @@
 }
 
 .dashboard-body {
-  background-color: #ffd1dc;
-  min-height: 100vh;
-  position: relative;
-  padding: 2rem;
-  box-sizing: border-box;
-  /* Remove flex properties from the parent */
+  background-color: #1A1953;
+ 
 }
 
 .dashboard-header {
@@ -123,6 +101,28 @@
   justify-content: center;
 }
 
+.dashboard-form-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  max-width: 500px;
+}
+
+.dashboard-form-inner label {
+  font-weight: bold;
+}
+
+.dashboard-form-inner input {
+  padding: 0.5rem;
+  min-width: 200px;
+}
+
+.dashboard-form-inner button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
 .dashboard-h2-messages-sendt {
   display: flex;
   justify-content: center;
@@ -131,12 +131,34 @@
 
 .dashboard-messages-sendt {
   display: flex;
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
-  margin: 3rem auto 0; /* Centers the element itself horizontally */
+  justify-content: center; 
+  align-items: center; 
+  margin: 3rem auto 0; 
   background-color: azure;
-  width: fit-content; /* Fits background to content width */
+  width: fit-content; 
   padding: 1rem;
-  height: fit-content; /* Fits background to content height */
+  height: fit-content; 
   border-radius: 50px;
+}
+
+
+.layout-img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 1rem auto;
+}
+
+.layout-button {
+  background-color: #162E93;
+  border: none;
+	color: white; 
+  padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 4px;
 }
