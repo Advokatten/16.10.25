@@ -1,6 +1,6 @@
 .index-body {
  
-  background-color: #1A1953;
+  background-color: #9AB17A;
 }
 
 .index-header {
@@ -10,7 +10,7 @@
 }
 
 .signin-body {
-  background-color: #1A1953;
+  background-color: #9AB17A;
   min-height: 100vh;
    
 
@@ -62,7 +62,7 @@
 }
 
 .fact-body {
-  background-color: #1A1953;
+  background-color: #9AB17A;
   
 }
 
@@ -85,7 +85,7 @@
 }
 
 .dashboard-body {
-  background-color: #1A1953;
+  background-color: #9AB17A;
  
 }
 
@@ -94,6 +94,7 @@
   justify-content: center;
   margin-top: 5rem;
   margin-bottom: 3rem;
+  color: white;
 }
 
 .dashboard-form {
@@ -111,6 +112,7 @@
 
 .dashboard-form-inner label {
   font-weight: bold;
+  color: white;
 }
 
 .dashboard-form-inner input {
@@ -127,6 +129,7 @@
   display: flex;
   justify-content: center;
   margin-top: 3rem;
+  color: white;
 }
 
 .dashboard-messages-sendt {
@@ -134,11 +137,12 @@
   justify-content: center; 
   align-items: center; 
   margin: 3rem auto 0; 
-  background-color: azure;
+  background-color: #E4DFB5;
   width: fit-content; 
   padding: 1rem;
   height: fit-content; 
   border-radius: 50px;
+  
 }
 
 
@@ -150,9 +154,9 @@
 }
 
 .layout-button {
-  background-color: #162E93;
+  background-color: #FBE8CE;
   border: none;
-	color: white; 
+	color: black; 
   padding: 10px 20px;
 	text-align: center;
 	text-decoration: none;

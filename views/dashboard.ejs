@@ -12,7 +12,7 @@
     </div>
     <div class="dashboard-form"> 
       <form method="post" class="dashboard-form-inner">
-        <label for="question_text">Spørsmål</label>
+        
         <input type="text" name="question_text" id="question_text" />
         <button type="submit">Submit</button>
       </form>
@@ -21,7 +21,7 @@
      </form>
    </div>
    <div class="dashboard-h2-messages-sendt">
-     <h2>Sendte spørsmål</h2>
+     <h2 >Tidligere forespørsler</h2>
    </div>
 
     <div class="dashboard-messages-sendt">
@@ -30,12 +30,12 @@
         <ul>
           <% messages.forEach(message => { %>
             <li>
-              <p><strong>Melding:</strong> <%= message.question_text %></p>
+              <p><strong>Forespørsel:</strong> <%= message.question_text %></p>
             </li>
           <% }); %>
         </ul>
       <% } else { %>
-        <p>Ingen spørsmål sendt ennå.</p>
+        <p>Ingen forespørsler sendt ennå.</p>
       <% } %>
     </div>
   </body>

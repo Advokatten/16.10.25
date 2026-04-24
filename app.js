@@ -71,7 +71,7 @@ app.get("/dashboard", checkAuth, async (req, res) => {
   const messages = await getAllMessages(connection);
   res.render("dashboard", {
     title: "Spørsmål",
-    heading: "Spørsmål",
+    heading: "Forespørsler til Catfact Coding",
     email: req.session.email,
     messages: messages,
   });
