@@ -17,6 +17,8 @@ const {
   signInGet,
   getAllMessages,
   userRequestIntoDatabase,
+  getUserMessages,
+  getUserRequests,
 } = require("./database/services");
 
 app.set("view engine", "ejs");
@@ -68,7 +70,7 @@ app.post("/registerUser", async (req, res) => {
 
 app.get("/dashboard", checkAuth, async (req, res) => {
   const connection = await createConnection();
-  const messages = await getAllMessages(connection);
+  const messages = await getUserMessages(connection, req.session.userId);
   res.render("dashboard", {
     title: "Spørsmål",
     heading: "Forespørsler til Catfact Coding",
@@ -80,13 +82,17 @@ app.get("/dashboard", checkAuth, async (req, res) => {
 app.post("/dashboard", checkAuth, async (req, res) => {
   const connection = await createConnection();
   const input = req.body;
-  await insertIntoQuestionsDatabase(connection, input.question_text);
+  await insertIntoQuestionsDatabase(
+    connection,
+    input.question_text,
+    req.session.userId,
+  );
   res.redirect("/dashboard");
 });
 
 app.get("/requests", checkAuth, async (req, res) => {
   const connection = await createConnection();
-  const messages = await getAllMessages(connection);
+  const messages = await getUserRequests(connection, req.session.userId);
   res.render("requests", {
     title: "Forespørsmål",
     heading: "Hva vil du at vi skal gjøre?",
@@ -98,7 +104,11 @@ app.get("/requests", checkAuth, async (req, res) => {
 app.post("/requests", checkAuth, async (req, res) => {
   const connection = await createConnection();
   const input = req.body;
-  await userRequestIntoDatabase(connection, input.question_text);
+  await userRequestIntoDatabase(
+    connection,
+    input.question_text,
+    req.session.userId,
+  );
   res.redirect("/requests");
 });
 

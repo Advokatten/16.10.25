@@ -1,11 +1,12 @@
-async function insertIntoQuestionsDatabase(connection, question_text) {
-  const query = "INSERT INTO questions (question_text) VALUES (?)";
-  return await connection.execute(query, [question_text]);
+async function insertIntoQuestionsDatabase(connection, question_text, userId) {
+  const query = "INSERT INTO questions (question_text, user_id) VALUES (?, ?)";
+  return await connection.execute(query, [question_text, userId]);
 }
 
-async function userRequestIntoDatabase(connection, requests) {
-  const query = "INSERT INTO user_requests (request_text) VALUES (?)";
-  return await connection.execute(query, [requests]);
+async function userRequestIntoDatabase(connection, requests, userId) {
+  const query =
+    "INSERT INTO user_requests (request_text, user_id) VALUES (?, ?)";
+  return await connection.execute(query, [requests, userId]);
 }
 
 async function getUserData(connection, email) {
@@ -58,6 +59,19 @@ async function getAllMessages(connection) {
   return results;
 }
 
+async function getUserMessages(connection, userId) {
+  const query = "SELECT * FROM questions WHERE user_id = ? ORDER BY id DESC";
+  const [results] = await connection.execute(query, [userId]);
+  return results;
+}
+
+async function getUserRequests(connection, userId) {
+  const query =
+    "SELECT * FROM user_requests WHERE user_id = ? ORDER BY id DESC";
+  const [results] = await connection.execute(query, [userId]);
+  return results;
+}
+
 module.exports = {
   getUserData,
   insertIntoQuestionsDatabase,
@@ -65,4 +79,6 @@ module.exports = {
   signIn,
   signInGet,
   getAllMessages,
+  getUserMessages,
+  getUserRequests,
 };
